@@ -1,0 +1,28 @@
+pipeline{
+    agent any
+
+        stages{
+            stage("Build"){
+                steps{
+                    echo "building .."
+                }
+                post{
+                    success{
+                        mail to: "hassanadraa9@gmail.com",
+                        subject: "build status email",
+                        body: "build was successful!"
+                    }
+                }
+            }
+            stage("Test"){
+                steps{
+                    echo "testing .."
+                }
+            }
+            stage("Deploy"){
+                steps{
+                    echo "deploying .."
+                }
+            }
+        }
+}
